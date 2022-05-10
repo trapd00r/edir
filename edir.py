@@ -221,8 +221,9 @@ class Path:
     @classmethod
     def writefile(cls, fp):
         'Write the file for user to edit'
-        fp.writelines(f'{i}\t{p.linerepr}\n' for i, p in
-                enumerate(cls.paths, 1))
+        for i, p in enumerate(cls.paths, 1):
+            j = str(i).rjust(2, ' ')
+            fp.writelines(f'{j}\t{p.linerepr}\n')
 
     @classmethod
     def readfile(cls, fp):
